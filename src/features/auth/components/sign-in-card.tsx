@@ -1,11 +1,13 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import DottedSeparator from "@/components/dotted-separator";
 
 const SignInCard = () => {
   return (
     <Card className="w-full h-full md:w-[487px] border-none shadow-none">
       <CardHeader className="flex items-center justify-center text-center p-7">
-        <CardTitle className="text-2xl"> Welcome Back !</CardTitle>
+        <CardTitle className="text-2xl px-7 mb-2"> Welcome Back !</CardTitle>
+        <DottedSeparator />
       </CardHeader>
     </Card>
   );
