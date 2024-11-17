@@ -3,7 +3,7 @@
 import React from "react";
 import SignInCard from "@/features/auth/components/sign-in-card";
 
-export const SignInPage = () => {
+const SignInPage = () => {
   return (
     <div>
       <SignInCard />
