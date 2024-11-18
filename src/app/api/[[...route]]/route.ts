@@ -1,10 +1,11 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
+import authRoute from "@/features/auth/server/route";
 
 const app = new Hono().basePath("/api");
 
-app.get("/hello", (req) => {
-  return req.json({ hello: "world" });
-});
+const routes = app.route("/auth", authRoute);
 
 export const GET = handle(app);
+
+export type AppType = typeof routes;

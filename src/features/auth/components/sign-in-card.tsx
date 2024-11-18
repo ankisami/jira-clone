@@ -1,11 +1,14 @@
 import React from "react";
 
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 
+import { loginSchema } from "@/features/auth/components/schemas";
+
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import DottedSeparator from "@/components/dotted-separator";
 import { Input } from "@/components/ui/input";
@@ -17,26 +20,17 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import Link from "next/link";
-
-const formSchema = z.object({
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, "Password must contain at least 8 character(s)")
-    .max(256, "Password must contain at most 256 character(s)"),
-});
 
 const SignInCard = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
+  const onSubmit = (data: z.infer<typeof loginSchema>) => {
     console.dir(data, { depth: Infinity });
   };
 
