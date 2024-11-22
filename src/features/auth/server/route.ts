@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
-import { setCookie } from "hono/cookie";
+import { deleteCookie, setCookie } from "hono/cookie";
 import {
   loginSchema,
   registerSchema,
@@ -38,6 +38,10 @@ const authRoute = new Hono()
       maxAge: 60 * 60 * 24 * 30,
     });
 
+    return c.json({ success: true });
+  })
+  .post("/logout", async (c) => {
+    deleteCookie(c, AUTH_COOKIE);
     return c.json({ success: true });
   });
 
